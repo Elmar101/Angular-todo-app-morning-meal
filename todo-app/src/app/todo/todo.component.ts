@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Model } from '../models/staticData';
+import { TodoItem } from '../models/todoItem';
 
 interface ITODO_ITEMS {
   id: number;
@@ -11,19 +13,22 @@ interface ITODO_ITEMS {
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
+  message: string = ""
+  model = new Model();
   private name: string = "Elmar";
   
   public get getName() : string {
-    return this.name; 
+    return this.model.name; 
   }
-  items: ITODO_ITEMS[] = [
-    {id: 1 , description: 'Seher Yemeyi', action: 'he'},
-    {id: 2 , description: 'Seher Bazarliqi', action: 'he'},
-    {id: 3 , description: 'Seher Idmani', action: 'yox'}
-  ]
-  constructor() { }
-
+  public get getItems(): TodoItem[]  {
+    return this.model.items;
+  }
+  
   ngOnInit(): void {
   }
 
+  public addToList(input: HTMLInputElement){
+    this.message = input.value; 
+    input.value ="";
+  }
 }

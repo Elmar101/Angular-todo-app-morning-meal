@@ -5,9 +5,10 @@
                 {{getName}}'in Listesi
             </h3>
             <div class="input-group mb-3">
-                <input type="text" class="form-control"/>
-                <button class="btn btn-primary"> Əlavə et </button>
+                <input #input type="text" class="form-control"/>
+                <button class="btn btn-primary" (click)="addToList(input)"> Əlavə et </button>
             </div>
+            {{message}}
             <div class="input-group mb-3">
                 <input type="checkbox" class="form-check-input" name="" id="disableAll"/>
                 <label for="disableAll" class="form-check-label"> Hamisini Görsəd</label>
@@ -21,7 +22,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of items; let i = index">
+                    <tr *ngFor="let item of getItems; let i = index">
                         <td>{{i+1}}</td>
                         <td>{{item.description}}</td>
                         <td>{{item.action}}</td>
