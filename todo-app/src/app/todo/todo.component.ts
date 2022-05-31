@@ -28,7 +28,7 @@ export class TodoComponent implements OnInit {
   }
 
   public addToList(input: HTMLInputElement){
-    this.message = input.value; 
+    input.value && (this.message = input.value); 
     input.value ="";
   }
 }
