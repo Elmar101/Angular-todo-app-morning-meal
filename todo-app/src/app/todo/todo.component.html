@@ -5,7 +5,13 @@
                 {{getName}}'in Listesi
             </h3>
             <div class="input-group mb-3">
-                <input #input type="text" class="form-control"/>
+                <input 
+                    #input 
+                    type="text" 
+                    class="form-control"
+                    (keyup.enter) = "addToList(input)"
+                    (blur) = "addToList(input)"
+                />
                 <button class="btn btn-primary" (click)="addToList(input)"> Əlavə et </button>
             </div>
             {{message}}
